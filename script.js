@@ -8,6 +8,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+   /* --- Certification view button: opens certification.pdf in new tab --- */
+  const certifView = document.getElementById('certif-view');
+  if (certifView) {
+    certifView.addEventListener('click', () => {
+      window.open('certification.pdf', '_blank');
+    });
+  }
+
   // Small accessible hover behavior: for keyboard users, toggle hover-info with focus
   const skills = document.querySelectorAll('.skill');
   skills.forEach(skill => {
