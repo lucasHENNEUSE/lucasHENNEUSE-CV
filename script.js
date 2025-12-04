@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     cvView.addEventListener('click', () => {
       window.open('cv.pdf', '_blank');
     });
-  }
+  
 
    /* --- Certification view button: opens certification.pdf in new tab --- */
   const certifView = document.getElementById('certif-view');
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
       window.open('certification.pdf', '_blank');
     });
   }
-
+  }
   // Small accessible hover behavior: for keyboard users, toggle hover-info with focus
   const skills = document.querySelectorAll('.skill');
   skills.forEach(skill => {
