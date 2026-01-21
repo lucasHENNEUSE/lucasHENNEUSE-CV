@@ -1,21 +1,21 @@
-// script.js - interaction for hover + CV view
 document.addEventListener('DOMContentLoaded', () => {
-  // CV view button: opens cv.pdf in new tab
+  
+  // CV view button: opens CV.pdf in new tab
   const cvView = document.getElementById('cv-view');
   if(cvView){
     cvView.addEventListener('click', () => {
-      window.open('cv.pdf', '_blank');
+      window.open('CV.pdf', '_blank');
     });
-  
+  }
 
-   /* --- Certification view button: opens certification.pdf in new tab --- */
-  const certifView = document.getElementById('certif-view');
-  if (certifView) {
+  // Certification view button: opens the specific long filename in new tab
+  const certifView = document.getElementById('certification-view');
+  if(certifView){
     certifView.addEventListener('click', () => {
-      window.open('certification.pdf', '_blank');
+      window.open('Certification professionnelle RNCP37827BC01 - HENNEUSE Lucas.pdf', '_blank');
     });
   }
-  }
+
   // Small accessible hover behavior: for keyboard users, toggle hover-info with focus
   const skills = document.querySelectorAll('.skill');
   skills.forEach(skill => {
@@ -26,29 +26,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // For touch devices: a tap toggles the info
   skills.forEach(skill => {
-    let tapped = false;
     skill.addEventListener('touchstart', (e) => {
       if(!skill.classList.contains('tapped')){
-        e.preventDefault();
         document.querySelectorAll('.skill.tapped').forEach(s => s.classList.remove('tapped'));
         skill.classList.add('tapped');
       }
     });
   });
 
-  // GitHub icon quick link (optional enhancement)
+  // GitHub icon quick link
   const ghBtn = document.getElementById('gh-btn');
   if(ghBtn){
     ghBtn.addEventListener('click', (e) => {
       // analytics or additional behavior could go here
     });
   }
-});
 
-document.getElementById("projects-link").addEventListener("click", function(e) {
-  e.preventDefault(); // empêche le lien de naviguer
+  // Projects Link Popup
+  const projectsLink = document.getElementById("projects-link");
+  if(projectsLink){
+    projectsLink.addEventListener("click", function(e) {
+      e.preventDefault(); 
 
-  const text = `
+      const text = `
 Depuis le 24 juin 2025, j’ai débuté ma formation en tant que développeur en Intelligence Artificielle, une expérience qui m’a permis d’acquérir de solides compétences techniques et pratiques. 
 Passionné d’informatique depuis longtemps, j’ai également réalisé plusieurs projets personnels, tels que la recréation du jeu PONG en Python ou un gestionnaire de tâches, que vous pouvez consulter sur mon GitHub : https://github.com/lucasHENNEUSE.
 
@@ -59,24 +59,26 @@ Je suis motivé à continuer à me perfectionner et à construire une véritable
 Tous mes projets et réalisations sont consultables sur mon GitHub : https://github.com/lucasHENNEUSE.
 
 Je vous remercie pour l’attention portée à la lecture de mon parcours et à l’utilisation de mon projet « CV ».
-  `;
+      `;
 
-  const newWindow = window.open("", "_blank", "width=600,height=700,scrollbars=yes,resizable=yes");
-  newWindow.document.write(`
-    <html>
-      <head>
-        <title>Mon parcours / projets</title>
-        <style>
-          body { font-family: Arial, sans-serif; padding: 20px; line-height: 1.6; background: #f9f9f9; color: #0f172a; }
-          h1 { text-align: center; }
-          a { color: #325cd1; text-decoration: none; }
-        </style>
-      </head>
-      <body>
-        <h1>Mon parcours / projets</h1>
-        <p>${text.replace(/\n/g, "<br>")}</p>
-      </body>
-    </html>
-  `);
-  newWindow.document.close();
+      const newWindow = window.open("", "_blank", "width=600,height=700,scrollbars=yes,resizable=yes");
+      newWindow.document.write(`
+        <html>
+          <head>
+            <title>Mon parcours / projets</title>
+            <style>
+              body { font-family: Arial, sans-serif; padding: 20px; line-height: 1.6; background: #f9f9f9; color: #0f172a; }
+              h1 { text-align: center; }
+              a { color: #325cd1; text-decoration: none; }
+            </style>
+          </head>
+          <body>
+            <h1>Mon parcours / projets</h1>
+            <p>${text.trim().replace(/\n/g, "<br>")}</p>
+          </body>
+        </html>
+      `);
+      newWindow.document.close();
+    });
+  }
 });
